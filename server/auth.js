@@ -1,4 +1,3 @@
-import auth from "express-openid-connect";
 
 const SECRET = process.env.SUNDAE_AUTH_SECRET;
 
