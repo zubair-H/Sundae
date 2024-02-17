@@ -1,5 +1,5 @@
 
-const SECRET = process.env.SUNDAE_AUTH_SECRET;
+const SECRET = "048e6ebdbae8c61e1d446e405773d3de4dbacf4d75a683f936dbf40c61caa89f";
 
 export const AUTH_CONFIG = {
   authRequired: false,
