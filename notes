@@ -1,0 +1,17 @@
+To runserver - npm start
+Required - npm i express firebase-admin nodemon
+
+Every document in Cloud Firestore is uniquely identified by its location within the database.
+The previous example showed a document alovelace within the collection users.
+To refer to this location in your code, you can create a reference to it.
+
+    import { doc } from "firebase/firestore";
+    const alovelaceDocumentRef = doc(db, 'users', 'alovelace');
+                    OR for convenience
+    const alovelaceDocumentRef = doc(db, 'users/alovelace');
+
+Same thing for collections
+
+    import { collection } from "firebase/firestore";
+    const usersCollectionRef = collection(db, 'users');
+
