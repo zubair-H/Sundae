@@ -25,7 +25,8 @@ app.post('/create', async (req, res) => {
             firstName: req.body.firstName,
             lastName: req.body.lastName
         };
-        const response = await db.collection("users").add(userJson);
+        const response = await db.collection("users").add(userJson); //auto gen id
+        // const response = await db.collection("users").doc(id).set(userJson); //defined id
         res.send(response);
     } catch(error){
         res.send(error);
@@ -84,7 +85,7 @@ app.delete('/delete/:id', async(req, res) =>{
 
 
 
-
+//PORT
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () =>{
     console.log(`Server is running on PORT ${PORT}.`);
