@@ -13,13 +13,16 @@ const app = express();
 app.use(express.static(BUILD));
 app.use(auth(AUTH_CONFIG));
 
-app.get("/isLoggedIn", (req, res) => {
-  res.send(req.oidc.isAuthenticated());
+app.get("/profile", (req, res) => {
+  console.log("Got request to get profile");
+  if (req.oidc.isAuthenticated()) {
+    console.log("Is authenticated");
+    res.send(JSON.stringify(req.oidc.user));
+  } else {
+    console.log("Is not authenticated");
+    res.send(null);
+  }
 });
-
-app.get("/profile", requiresAuth(), (req, res) => {
-  res.send(JSON.stringify(req.oidc.user));
-})
 
 app.get("/api", requiresAuth(), (req, res) => {
   console.log("Got API Request " + req);
