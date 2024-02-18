@@ -2,7 +2,7 @@
   border: 2px solid black;
   border-radius: 10px;
   padding: 20px;
-  width: 500px;
+  width: 600px;
   margin: 20px auto;
   background-color: #222222;
 }
@@ -52,15 +52,6 @@ li {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 5px;
-}
-
-button {
-  background-color: #f44336;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 3px;
-  cursor: pointer;
 }
 
 button:hover {
