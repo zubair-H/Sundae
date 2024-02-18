@@ -1,0 +1,12 @@
+{
+  "name": "sundae",
+  "version": "1.0.0",
+  "description": "Manage your life",
+  "main": "",
+  "scripts": {
+    "start": "npm start --prefix server",
+    "install-client": "cd client && npm i && npm run build && cd ..",
+    "install-server": "cd server && npm i && cd ..",
+    "heroku-postbuild": "npm run install-client && npm run install-server"
+  }
+}
