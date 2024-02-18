@@ -4,3 +4,9 @@
   margin-top: 0;
   background-color: black;
 }
+
+.navbar-item {
+  float: center;
+  display: inline;
+  margin: 40px;
+}

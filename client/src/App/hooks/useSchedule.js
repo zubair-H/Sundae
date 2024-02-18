@@ -5,12 +5,7 @@ import axios from "axios";
 
 export const useSchedule = () => {
   const [isLoggedIn, profile] = useServer();
-  const [schedule, _setSchedule] = useState(
-    [
-      {className: "systems", time: "4:30", location: "horizon"},
-      {className: "data", time: "6:15", location: "jc"}
-    ]
-  );
+  const [schedule, _setSchedule] = useState([]);
 
   const addSchedule = (entry) => {
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSchedule } from "../hooks/useSchedule";
+import { useSchedule } from "../../hooks/useSchedule";
 import "./Schedule.css";
 
 export function Schedule() {

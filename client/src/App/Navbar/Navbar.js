@@ -1,10 +1,10 @@
 import "./Navbar.css";
 
-export const Navbar = () => {
+export const Navbar = (props) => {
   return (
     <div className="navbar">
-      <a href="/login"><button>Login</button></a>
-      <a href="/logout"><button>Logout</button></a>
+      <p className="navbar-item">Hello {props.userName}!</p>
+      <a className="navbar-item" href="/logout"><button>Logout</button></a>
     </div>
   );
 }
