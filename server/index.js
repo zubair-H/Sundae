@@ -9,7 +9,7 @@ import auth0 from 'express-openid-connect';
 const { auth, requiresAuth } = auth0;
 
 const BUILD = path.resolve("../client/build/");
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 
