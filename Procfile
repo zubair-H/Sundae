@@ -1,1 +1,1 @@
-web: cd server && npm run go
+web: cd client && npm i && npm run build && cd ../server && npm i && npm run start
