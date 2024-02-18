@@ -1,5 +1,5 @@
 import './App.css';
-import { useServer } from "./useServer";
+import { useServer } from "./hooks/useServer";
 
 function App() {
   const [isLoggedIn, profile] = useServer();
@@ -17,7 +17,5 @@ function App() {
     </div>
   );
 }
-
-
 
 export default App;
