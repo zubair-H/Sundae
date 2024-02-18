@@ -9,7 +9,7 @@ import { useServer } from "./hooks/useServer";
 import './App.css';
 
 // Test purposes only
-const DISABLE_LOGIN_SCREEN = true;
+const DISABLE_LOGIN_SCREEN = false;
 
 function App() {
   const [isLoggedIn, profile] = useServer();
