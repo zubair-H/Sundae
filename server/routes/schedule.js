@@ -1,42 +1,57 @@
 // Schedule router
 
 import express from "express";
-export const router = express.Router();
+import auth0 from 'express-openid-connect';
+import { db } from "../db.js";
+const { requiresAuth } = auth0;
 
-router.get('/add', requiresAuth(), async (req, res) => {
-  const id = req.oidc.sub;
+export const scheduleRouter = express.Router();
+
+scheduleRouter.post('/add', requiresAuth(), async (req, res) => {
+  const id = req.oidc.user.sub;
   console.log("Got schedule add request from " + id);
 
-  try{
+  try {
     const newRecord = req.body;
     const userRef = db.collection("users").doc(id);
-    let schedule = await userRef.get().data().schedule;
-    schedule.add(newRecord);
+    const doc = await userRef.get();
+    let schedule = doc.data().schedule;
+    schedule.push(newRecord);
     userRef
       .update({
-          schedule: schedule
+        schedule: schedule
       });
     res.send("Record updated");
-  }catch(error){
-      res.send(error)
+  } catch (error) {
+    console.error(error);
+    res.send(error);
   }
 });
 
-router.get('/remove', requiresAuth(), async (req, res) => {
-  const id = req.oidc.sub;
+scheduleRouter.post('/remove', requiresAuth(), async (req, res) => {
+  const id = req.oidc.user.sub;
   console.log("Got schedule remove request from " + id);
 
-  try{
-    const targetRecord = req.body;
+  try {
+    const entry = req.body;
+
     const userRef = db.collection("users").doc(id);
-    let schedule = await userRef.get().data().schedule;
-    schedule.remove(targetRecord);
+    const doc = await userRef.get();
+    let schedule = doc.data().schedule;
+
+    let newSched = schedule.filter(otherEntry => 
+      otherEntry.className !== entry.className ||
+      otherEntry.time !== entry.time ||
+      otherEntry.location !== entry.location
+    );
+
     userRef
       .update({
-          schedule: schedule
+        schedule: newSched
       });
     res.send("Record updated");
-  }catch(error){
-      res.send(error)
+  } catch (error) {
+    console.error(error);
+    res.send(error)
   }
 });

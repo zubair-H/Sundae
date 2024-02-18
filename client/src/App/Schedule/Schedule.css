@@ -1,0 +1,68 @@
+#schedule {
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 20px;
+  width: 500px;
+  margin: 20px auto;
+  background-color: #222222;
+}
+
+#title {
+  text-align: center;
+  color: white;
+}
+
+#classes-form {
+  margin-bottom: 15px;
+}
+
+#classes-form input {
+  display: inline-block;
+  margin-right: 10px;
+  width: 100px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#add-class {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#add-class:hover {
+  background-color: #45a049;
+}
+
+.classes-list {
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #d32f2f;
+}

@@ -1,26 +1,22 @@
-import auth0 from 'express-openid-connect';
 import express from "express";
 import path from "path";
-import admin from "firebase-admin";
+import { db } from "./db.js";
 import { AUTH_CONFIG } from "./auth.js";
-import { KEY } from "./key.js";
 
+import { scheduleRouter } from "./routes/schedule.js";
+
+import auth0 from 'express-openid-connect';
 const { auth, requiresAuth } = auth0;
 
 const BUILD = path.resolve("../client/build/");
 const PORT = 3000;
 
-admin.initializeApp({
-  credential: admin.credential.cert(KEY)
-});
-
-const db = admin.firestore();
 const app = express();
 
 app.use(express.json());
 app.use(express.static(BUILD));
 app.use(auth(AUTH_CONFIG));
-app.use("/schedule", require("./routes/schedule").router);
+app.use("/schedule", scheduleRouter);
 
 app.get("/profile", async (req, res) => {
 
@@ -47,11 +43,14 @@ app.get("/profile", async (req, res) => {
   console.log("Creating new user record");
 
   const userJson = {
-    email: req.oidc.user.email,
-    firstName: req.oidc.user.given_name,
-    lastName: req.oidc.user.family_name,
+    email: req.oidc.user.email || '',
+    firstName: req.oidc.user.given_name || '',
+    lastName: req.oidc.user.family_name || '',
     schedule: []
   };
+
+  console.log(id);
+  console.log(userJson);
   response = await db.collection("users").doc(id).set(userJson); //defined id
   res.send(userJson);
 });

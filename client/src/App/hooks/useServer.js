@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-
-const ENDPOINT = "http://localhost:3000";
+import ENDPOINT from "./endpoint";
 
 export const useServer = () => {
   const [isLoggedIn, _setIsLoggedIn] = useState(false);
