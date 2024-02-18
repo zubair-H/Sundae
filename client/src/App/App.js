@@ -8,13 +8,16 @@ import { Login } from "./Login/Login";
 import { useServer } from "./hooks/useServer";
 import './App.css';
 
+// Test purposes only
+const DISABLE_LOGIN_SCREEN = true;
+
 function App() {
   const [isLoggedIn, profile] = useServer();
   const [isRelaxMode, setIsRelaxMode] = useState(true);
 
   const getName = () => (profile?.firstName || '') + " " + (profile?.lastName || '');
 
-  if (isLoggedIn) {
+  if (isLoggedIn || DISABLE_LOGIN_SCREEN) {
     return (
       <div className="App">
         <Navbar userName={getName()}/>

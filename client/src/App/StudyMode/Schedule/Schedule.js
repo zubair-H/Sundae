@@ -30,7 +30,7 @@ export function Schedule() {
   };
 
   return (
-    <div id="schedule">
+    <div className="card">
       <h2 id="title">Classes</h2>
       <header>
         <form id="classes-form">
@@ -62,9 +62,9 @@ export function Schedule() {
       </header>
       <main>
         <section className="classes-list">
-          <ul id="classes-list">
+          <ul className="class-list">
             {schedule?.map((classItem) => (
-              <li>
+              <li className="classLi">
                 {`${classItem.className} - ${classItem.time} - ${classItem.location}`}
                 <button onClick={() => handleDeleteClass(classItem)}>Delete</button>
               </li>
